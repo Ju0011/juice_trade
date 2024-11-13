@@ -5,11 +5,11 @@ import '../../theme.dart';
 import '../drawer/drawer_screen.dart';
 import 'test.dart';
 
-
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffD3D3D3),
       appBar: AppBar(
         title: const Text("홈"),
       ),
@@ -18,35 +18,50 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text("상위 거래량", style: middleTitle()),
+
+            Container(
+              margin: const EdgeInsets.all(20.0), // 화면 여백
+              decoration: homeContainer,
+
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text("상위 거래량", style: middleTitle()),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 350,
+                    child: TradingVolumeListTest(),
+                  ),
+                  const SizedBox(height: 14.0),
+                ],
               ),
             ),
+            const SizedBox(height: 8.0),
 
 
-            SizedBox(
-              height: 400,
-              child: TradingVolumeListTest(),
-            ),
-            const SizedBox(height: 16.0), // 여백 추가
-            const Divider(thickness: 1, height: 1, color:Color(0xffC0C0C0)),
-
-
-            Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text("시가총액 상위", style: middleTitle()),
+            Container(
+              margin: const EdgeInsets.all(20.0),
+              decoration: homeContainer,
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text("시가총액 상위", style: middleTitle()),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 350,
+                    child: TradingVolumeListTest2(),
+                  ),
+                  const SizedBox(height: 14.0)
+                ],
               ),
-            ),
-
-
-            SizedBox(
-              height: 400,
-              child: TradingVolumeListTest2(),
             ),
           ],
         ),
@@ -54,3 +69,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+

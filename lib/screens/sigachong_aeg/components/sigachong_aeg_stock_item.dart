@@ -21,12 +21,12 @@ class SigachongAegStockItem extends StatelessWidget {
         children: [
           Text(
             "${numberFormat.format(item['price'])}원",
-            style: percentageTextStyle(Diff, 0, 16.0),
+            style: percentageTextStyle(Diff, 0, 15.0),
             //fontSize : 16.0,
           ),
           Text(
             "${Diff.toStringAsFixed(2)}%",
-            style: percentageTextStyle(Diff, 0, 8.0),
+            style: percentageTextStyle(Diff, 0, 10.0),
           ),
         ],
       ),

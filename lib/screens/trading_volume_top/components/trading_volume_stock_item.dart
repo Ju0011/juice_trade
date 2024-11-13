@@ -11,7 +11,7 @@ class TradingVolumeStockItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double befDiff = double.tryParse(item['bef_diff'].toString()) ?? 0.0;
+    final double jnilVolume = double.tryParse(item['jnilvolume'].toString()) ?? 0.0;
 
     return ListTile(
       horizontalTitleGap: 10,
@@ -23,12 +23,12 @@ class TradingVolumeStockItem extends StatelessWidget {
         children: [
           Text(
             "${numberFormat.format(item['price'])}원",
-            style: percentageTextStyle(befDiff, 100, 16.0),
+            style: percentageTextStyle(jnilVolume, 100, 15.0),
             //fontSize : 16.0,
           ),
           Text(
-            "${befDiff.toStringAsFixed(2)}%",
-            style: percentageTextStyle(befDiff, 100, 8.0),
+            "${numberFormat.format(item['jnilvolume'])}",
+            style: percentageTextStyle(jnilVolume, 100, 10.0),
           ),
         ],
       ),

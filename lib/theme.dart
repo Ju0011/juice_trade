@@ -6,7 +6,7 @@ TextTheme textTheme() {
   return TextTheme(
     displayLarge: GoogleFonts.openSans(fontSize: 18.0, color: Colors.black),
     displayMedium: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
-    bodyLarge: GoogleFonts.openSans(fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold),
+    bodyLarge: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
     bodyMedium: GoogleFonts.openSans(fontSize: 15.0, color: Colors.black),
     titleMedium: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black),
   );
@@ -80,8 +80,8 @@ CardTheme cardTheme(){
 ElevatedButtonThemeData elevatedButtonTheme() {
   return ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: WidgetStateProperty.all<Color>(const Color(0xffC0C0C0)), // 버튼 배경색
-      foregroundColor: WidgetStateProperty.all<Color>(Colors.white), // 텍스트 색상
+      backgroundColor: WidgetStateProperty.all<Color>(const Color(0xffD3D3D3)), // 버튼 배경색
+      foregroundColor: WidgetStateProperty.all<Color>(Colors.black), // 텍스트 색상
       padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
         const EdgeInsets.symmetric(vertical: 12, horizontal: 90), // 패딩 설정 - 세로 가로
       ),
@@ -125,3 +125,7 @@ TextStyle middleTitle() {
   );
 }
 
+BoxDecoration homeContainer = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(20), // 둥근 테두리 반경
+);
