@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../api/investment_api.dart';
 import '../../components/loading_api_error.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import '../trading_volume_top/components/trading_volume_stock_item.dart';
 import 'components/day_toggle.dart';
 import 'components/kospi_toggle.dart';
@@ -36,12 +35,10 @@ class TradingVolumeTopDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int gubun = 0;
-    int jnilgubun = 1;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("주식 거래량 상위 목록"),
+        title: Text("주식 거래량 상위 전체 목록"),
       ),
       body: Column(
         children: [
@@ -96,10 +93,14 @@ class TradingVolumeTopDetailScreen extends StatelessWidget {
                             snapshot.data!.isEmpty) {
                           return LoadingApiError(snapshot: snapshot);
                         } else {
-                          // 성공일 경우 데이터 리스트 출력
-                          return TradingVolumeStockItem(
-                            stockList: snapshot.data!,
-                            displayCount: snapshot.data!.length,
+                          final stockList = snapshot.data!;
+                          return ListView.builder(
+                            padding: EdgeInsets.all(5),  //padding
+                            itemCount: stockList.length,
+                            itemBuilder: (context, index) {
+                              final item = stockList[index];
+                              return TradingVolumeStockItem(item: item);
+                            },
                           );
                         }
                       },

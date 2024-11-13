@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:juice_trade/screens/sigachong_aeg/sigachong_aeg_screen.dart';
-import 'package:juice_trade/screens/trading_volume_top/trading_volume_top_screen.dart';
+import 'package:juice_trade/screens/trading_voulme_top_detail/trading_volume_top_detail_screen.dart';
 import 'check_list/check_list_screen.dart';
 import 'home/home_screen.dart';
 import 'my_page/my_page_screen.dart';
@@ -22,7 +22,7 @@ class _MainScreensState extends State<MainScreens> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: [HomeScreen(), TradingVolumeScreen(), SigachongAegScreen(), CheckListScreen(), MyPageScreen()],
+        children: [HomeScreen(), TradingVolumeTopDetailScreen(), SigachongAegScreen(), CheckListScreen(), MyPageScreen()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

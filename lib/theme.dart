@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 
 TextTheme textTheme() {
   return TextTheme(
     displayLarge: GoogleFonts.openSans(fontSize: 18.0, color: Colors.black),
     displayMedium: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
-    bodyLarge: GoogleFonts.openSans(fontSize: 18.0, color: Colors.black),
+    bodyLarge: GoogleFonts.openSans(fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold),
     bodyMedium: GoogleFonts.openSans(fontSize: 15.0, color: Colors.black),
     titleMedium: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black),
-
   );
 }
 
@@ -46,18 +44,19 @@ ThemeData theme() {
     appBarTheme: appBarTheme(),
     drawerTheme: drawerTheme(),
     bottomNavigationBarTheme: bottomNavigatorTheme(),
-    primarySwatch: Colors.green,
+    primarySwatch: Colors.indigo,
     cardTheme: cardTheme(),
     elevatedButtonTheme: elevatedButtonTheme(), // ElevatedButton 테마 적용
 
   );
 }
 
-DrawerThemeData drawerTheme(){
+DrawerThemeData drawerTheme() {
   return const DrawerThemeData(
     backgroundColor: Colors.white,
   );
 }
+
 
 IconThemeData iconTheme(){
   return const IconThemeData(
@@ -81,10 +80,10 @@ CardTheme cardTheme(){
 ElevatedButtonThemeData elevatedButtonTheme() {
   return ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: WidgetStateProperty.all<Color>(Colors.blue), // 버튼 배경색
+      backgroundColor: WidgetStateProperty.all<Color>(const Color(0xffC0C0C0)), // 버튼 배경색
       foregroundColor: WidgetStateProperty.all<Color>(Colors.white), // 텍스트 색상
       padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
-        const EdgeInsets.symmetric(vertical: 12, horizontal: 24), // 패딩 설정
+        const EdgeInsets.symmetric(vertical: 12, horizontal: 90), // 패딩 설정 - 세로 가로
       ),
       textStyle: WidgetStateProperty.all<TextStyle>(
         const TextStyle(fontSize: 16, fontWeight: FontWeight.bold), // 텍스트 스타일 설정
@@ -98,6 +97,31 @@ ElevatedButtonThemeData elevatedButtonTheme() {
   );
 }
 
+// 주식 아이콘 CircleAvatar
+Widget stockAvatar(String? name, {Color backgroundColor = Colors.blue}) {
+  return CircleAvatar(
+    backgroundColor: backgroundColor,
+    child: Text(
+      name?.substring(0, 1) ?? '',
+      style: const TextStyle(color: Colors.white),
+    ),
+  );
+}
 
 
+// 기준가에 따른 텍스트 색 지정
+TextStyle percentageTextStyle(double befDiff, int temp, double size) {
+  return TextStyle(
+    fontSize: size,
+    color: befDiff >= temp ? Colors.red : Colors.blue,
+    fontWeight: FontWeight.bold,
+  );
+}
+
+TextStyle middleTitle() {
+  return const TextStyle(
+    fontSize: 23.0,
+    fontWeight: FontWeight.bold,
+  );
+}
 

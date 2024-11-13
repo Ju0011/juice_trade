@@ -25,8 +25,16 @@ class SigachongAegScreen extends StatelessWidget {
               !snapshot.hasData ||
               snapshot.data!.isEmpty) {
             return LoadingApiError(snapshot: snapshot);
-          } else {  //성공일 경우 listnview 출력
-            return SigachongAegStockItem(stockList: snapshot.data!);
+          } else {
+            final stockList = snapshot.data!;
+            return ListView.builder(
+              padding: EdgeInsets.all(5),  //padding
+              itemCount: stockList.length,
+              itemBuilder: (context, index) {
+                final item = stockList[index];
+                return SigachongAegStockItem(item: item);
+              },
+            );
           }
         },
       ),
