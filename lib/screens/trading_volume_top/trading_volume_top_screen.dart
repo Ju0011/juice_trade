@@ -20,8 +20,7 @@ class TradingVolumeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("주식 거래량 상위 목록"),
       ),
-      body:
-      FutureBuilder<List<Map<String, dynamic>>>(
+      body: FutureBuilder<List<Map<String, dynamic>>>(
         future: fetchStockData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState != ConnectionState.done ||
@@ -30,35 +29,42 @@ class TradingVolumeScreen extends StatelessWidget {
               snapshot.data!.isEmpty) {
             return LoadingApiError(snapshot: snapshot);
           } else {
-            return StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
-
-                return Column(
-                  children: [
-                    Expanded(
-                      child: TradingVolumeStockItem(
-                        stockList: snapshot.data!,
-                        displayCount: displayCount,
+            return
+              StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) {
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: TradingVolumeStockItem(
+                          stockList: snapshot.data!,
+                          displayCount: displayCount,
+                        ),
                       ),
-                    ),
-                    if (displayCount < snapshot.data!.length)   // api데이터 갯수가 5개보다 많으면
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context, MaterialPageRoute(builder: (_) => TradingVolumeTopDetailScreen()));
-                        },
-                        child: Text("더 보 기"),
-                      ),
-                  ],
-                );
-              },
-            );
+                      if (displayCount < snapshot.data!.length) // api 데이터 갯수가 5개보다 많으면
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => TradingVolumeTopDetailScreen()),
+                              );
+                            },
+                            child: Text("더 보 기"),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              );
           }
         },
-      ),
+      )
+
     );
   }
 }
+
 
 
 // ElevatedButton(
