@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../../components/constants.dart';
 import '../../../theme.dart';
+import '../../now_price/now_price_screen.dart';
 
 // 주식 항목 하나를 표시하는 위젯
 class TradingVolumeStockItem extends StatelessWidget {
@@ -32,6 +33,14 @@ class TradingVolumeStockItem extends StatelessWidget {
           ),
         ],
       ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NowPriceScreen(shcode: item['shcode']),
+          ),
+        );
+      },
     );
   }
 }

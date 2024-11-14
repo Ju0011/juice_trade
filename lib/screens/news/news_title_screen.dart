@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../api/investment_api.dart';
 import '../../components/loading_api_error.dart';
-import 'components/sigachong_aeg_stock_item.dart';
+import 'components/news_item.dart';
 
-class SigachongAegScreen extends StatelessWidget {
+class NewsTitleScreen extends StatelessWidget {
   final InvestmentAPI api = InvestmentAPI(); // InvestmentAPI 인스턴스 생성
 
-  // 시가총액 데이터 호출
+  // 주식 상위 목록 데이터 호출
   Future<List<Map<String, dynamic>>> fetchStockData() {
-    return api.getStartCost("001");
+    return api.getNewsTitle("t3102", "2023051510383935PL7HQ87D");
   }
 
   @override
@@ -32,7 +32,7 @@ class SigachongAegScreen extends StatelessWidget {
               itemCount: stockList.length,
               itemBuilder: (context, index) {
                 final item = stockList[index];
-                return SigachongAegStockItem(item: item);
+                return NewsItem(item: item);
               },
             );
           }

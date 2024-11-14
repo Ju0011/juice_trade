@@ -129,3 +129,9 @@ BoxDecoration homeContainer = BoxDecoration(
   color: Colors.white,
   borderRadius: BorderRadius.circular(20), // 둥근 테두리 반경
 );
+
+// 현재가 박스
+BoxDecoration nowCostContainer = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(20),
+);

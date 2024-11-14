@@ -33,14 +33,13 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 350,
+                    height: 360,
                     child: TradingVolumeListTest(),
                   ),
                   const SizedBox(height: 14.0),
                 ],
               ),
             ),
-            const SizedBox(height: 8.0),
 
 
             Container(
@@ -56,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 350,
+                    height: 360,
                     child: TradingVolumeListTest2(),
                   ),
                   const SizedBox(height: 14.0)

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:juice_trade/components/constants.dart';
 
 import '../../../theme.dart';
+import '../../now_price/now_price_screen.dart';
 
 class SigachongAegStockItem extends StatelessWidget {
   final Map<String, dynamic> item;
@@ -30,6 +31,14 @@ class SigachongAegStockItem extends StatelessWidget {
           ),
         ],
       ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NowPriceScreen(shcode: item['shcode']),
+          ),
+        );
+      },
     );
   }
 }
